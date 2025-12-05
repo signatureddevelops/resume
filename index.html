@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DeVirn C. Narine · Medical Assistant Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Signature D clinical style */
+      --bg: #f5f4f1;
+      --card: #ffffff;
+      --ink: #20252a;
+      --ink-soft: #5f6770;
+      --accent: #0f766e;      /* soft clinical teal */
+      --accent-soft: #e0f2f1;
+      --border-soft: #e1e1dd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 32px 16px;
+    }
+
+    .resume-shell {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(16, 24, 40, 0.06);
+      padding: 32px 28px 36px;
+    }
+
+    @media (min-width: 768px) {
+      .resume-shell {
+        padding: 40px 48px 44px;
+      }
+    }
+
+    .resume-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .name-block h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .name-block .title-line {
+      font-size: 0.98rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-top: 4px;
+      color: var(--ink-soft);
+    }
+
+    .tag-pill {
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: linear-gradient(to right, #ffffff, #f2fbfa);
+      padding: 6px 14px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .contact-row span,
+    .contact-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-row a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-row a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .section-divider {
+      width: 52px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      margin-bottom: 8px;
+    }
+
+    .summary-text {
+      font-size: 0.93rem;
+      color: var(--ink);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 720px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .experience-item {
+      margin-bottom: 10px;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .experience-header .org {
+      font-weight: 500;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .experience-header .dates {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .experience-location {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-top: 1px;
+    }
+
+    .experience-meta {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .experience-item ul {
+      margin-top: 4px;
+      padding-left: 18px;
+      font-size: 0.87rem;
+    }
+
+    .experience-item li {
+      margin-bottom: 2px;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #fafaf9;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .subsection-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+
+    .edu-item {
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+    }
+
+    .edu-item span {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+    }
+
+    .hobby-line {
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+    }
+
+    .reference-item {
+      font-size: 0.84rem;
+      margin-bottom: 4px;
+    }
+
+    .reference-item span {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+    }
+
+    /* Print tweaks */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .resume-shell {
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume-shell">
+    <!-- HEADER -->
+    <header class="resume-header">
+      <div class="name-row">
+        <div class="name-block">
+          <h1>DEVIRN C. NARINE</h1>
+          <div class="title-line">MEDICAL ASSISTANT · EKG TECHNICIAN · BLS CERTIFIED</div>
+        </div>
+        <div class="tag-pill">
+          Signature D · Clinical Profile
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <span>📞 407-319-6740</span>
+        <span>📧 <a href="mailto:narinedevirn@gmail.com">narinedevirn@gmail.com</a></span>
+        <span>🔗 <a href="https://www.linkedin.com/in/devirnnarine-282037315/" target="_blank" rel="noreferrer">linkedin.com/in/devirnnarine-282037315</a></span>
+        <span>📍 Florida, USA</span>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="section">
+      <div class="section-title">Professional Summary</div>
+      <div class="section-divider"></div>
+      <p class="summary-text">
+        Certified Clinical Medical Assistant (CCMA) and EKG Technician with Level II Background Check, hands-on clinical training, and experience in
+        patient care, vitals, phlebotomy, diagnostic testing, and medical office workflows. Backed by 18 years in customer service and hospitality,
+        bringing compassionate communication, professionalism, and adaptability to every patient interaction. Actively advancing toward ASN–RN while
+        contributing to a high-standard, patient-centered care team.
+      </p>
+    </section>
+
+    <div class="two-col">
+      <!-- LEFT COLUMN: EXPERIENCE -->
+      <section class="section">
+        <div class="section-title">Clinical & Professional Experience</div>
+        <div class="section-divider"></div>
+
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              Volunteer Medical Assistant
+              <div class="org">Osceola Council on Aging</div>
+            </div>
+            <div class="dates">Oct 2025 – Present</div>
+          </div>
+          <div class="experience-location">Osceola County, FL</div>
+          <div class="experience-meta">Supervisor: Nicole Santiago, RN</div>
+          <ul>
+            <li>Provide direct support to senior patients during clinics, including vital signs, basic triage, and health screenings.</li>
+            <li>Assist with patient flow, documentation prep, and coordination to keep visits efficient and calm.</li>
+            <li>Support nursing staff with patient education and follow-up instructions in an accessible, empathetic way.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              Guest Services & Community Support Coordinator
+              <div class="org">High-Volume Community Environment</div>
+            </div>
+            <div class="dates">Jan 2025 – Nov 2025</div>
+          </div>
+          <ul>
+            <li>Coordinated guest services and outreach activities, serving diverse individuals with confidentiality and discretion.</li>
+            <li>Maintained organized records, schedules, and communication logs in a fast-paced setting.</li>
+            <li>Developed strong interpersonal, de-escalation, and multi-tasking skills directly transferable to patient care.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-header">
+            <div>
+              Hospitality & Customer Service Roles
+              <div class="org">Florida · Trinidad &amp; Tobago</div>
+            </div>
+            <div class="dates">Aug 2013 – Aug 2024</div>
+          </div>
+          <ul>
+            <li>Served with respected brands including Marriott International, Starbucks (Target), and high-volume food and retail venues.</li>
+            <li>Delivered consistent, high-quality service while managing queues, handling concerns, and maintaining brand standards.</li>
+            <li>Built a strong foundation of empathy, professionalism, and teamwork ideal for clinical environments.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: SKILLS / CERTS / EDUCATION / HOBBIES / REFERENCES -->
+      <section class="section">
+        <!-- SKILLS -->
+        <div>
+          <div class="section-title">Core Skills</div>
+          <div class="section-divider"></div>
+          <div class="chip-grid">
+            <span class="chip">Clinical triage</span>
+            <span class="chip">Vital signs &amp; intake</span>
+            <span class="chip">Patient-centered care</span>
+            <span class="chip">EKG administration</span>
+            <span class="chip">Phlebotomy (trained)</span>
+            <span class="chip">HIPAA compliance</span>
+            <span class="chip">Health promotion</span>
+            <span class="chip">EHR familiarity</span>
+            <span class="chip">Fast-paced adaptability</span>
+            <span class="chip">Compassionate communication</span>
+          </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div style="margin-top: 16px;">
+          <div class="section-title">Certifications</div>
+          <div class="section-divider"></div>
+          <div class="edu-item">
+            <strong>CCMA — Certified Clinical Medical Assistant</strong>
+            <span>NHA · Credential ID: K4K8Y3H9</span>
+          </div>
+          <div class="edu-item">
+            <strong>CET — Certified EKG Technician</strong>
+            <span>NHA · Credential ID: M8X3Z3Z4</span>
+          </div>
+          <div class="edu-item">
+            <strong>BLS — Basic Life Support</strong>
+            <span>American Medical Association · ID: 255416613538</span>
+          </div>
+          <div class="edu-item">
+            <strong>Level II Background Check</strong>
+            <span>Status: Active</span>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div style="margin-top: 16px;">
+          <div class="section-title">Education</div>
+          <div class="section-divider"></div>
+          <div class="edu-item">
+            <strong>Palm Beach State College</strong>
+            <span>ASN to RN Program (In Progress) · Sept 2024 – June 2027</span>
+            <span>Online coursework while gaining hands-on clinical experience.</span>
+          </div>
+          <div class="edu-item">
+            <strong>Valencia College</strong>
+            <span>Clinical MA &amp; EKG Training Program · Nov 2024 – May 2025</span>
+            <span>Prepared for NHA CCMA and CET credentials and AMA BLS certification.</span>
+          </div>
+        </div>
+
+        <!-- HOBBIES -->
+        <div style="margin-top: 16px;">
+          <div class="section-title">Interests</div>
+          <div class="section-divider"></div>
+          <p class="hobby-line">
+            Running · Photography · Traveling · Cooking · Dancing · Camping
+          </p>
+        </div>
+
+        <!-- REFERENCES -->
+        <div style="margin-top: 16px;">
+          <div class="section-title">References</div>
+          <div class="section-divider"></div>
+          <div class="reference-item">
+            <strong>Nicole Santiago, RN</strong>
+            <span>Osceola Council on Aging</span>
+            <span>Phone: 407-483-0021</span>
+            <span>Email: Santiagon@osceola-coa.com</span>
+          </div>
+          <div class="reference-item">
+            <strong>Additional references available upon request.</strong>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
